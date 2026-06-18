@@ -1,0 +1,1012 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="LKE_LoginModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="LogInHistory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="webuserID" Type="int" />
+          <Property Name="webuserDbaseID" Type="int" />
+          <Property Name="webuserLoginDate" Type="date" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ReportsArchive">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserActionID" Type="int" Nullable="false" />
+          <Property Name="ReportID" Type="int" />
+          <Property Name="ReportName" Type="varchar" MaxLength="200" />
+          <Property Name="Username" Type="varchar" MaxLength="200" />
+          <Property Name="YearID" Type="int" />
+          <Property Name="CaseID" Type="int" />
+          <Property Name="CaseID2" Type="int" />
+          <Property Name="LEID" Type="int" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="Dep_Type" Type="varchar" MaxLength="50" />
+          <Property Name="BlobName" Type="varchar" MaxLength="200" />
+          <Property Name="ContainerName" Type="varchar" MaxLength="200" />
+          <Property Name="generationStatus" Type="int" />
+        </EntityType>
+        <EntityType Name="UserActionTrack">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="ReportId" Type="int" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsStarted" Type="bit" />
+          <Property Name="IsCompleted" Type="bit" />
+          <Property Name="CreatedFilePath" Type="nvarchar" MaxLength="500" />
+          <Property Name="Database" Type="nvarchar" MaxLength="300" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="ReportIDShortNames" Type="nvarchar" MaxLength="1000" />
+          <Property Name="NotificationText" Type="nvarchar" MaxLength="1000" />
+          <Property Name="IsRequestRecreation" Type="bit" />
+        </EntityType>
+        <EntityType Name="WebDatabases">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GenericDbaseName" Type="varchar" MaxLength="50" />
+          <Property Name="ActualDbaseName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Active" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="WebDbaseAssignments">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="DbaseID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WebRoleDesc">
+          <Key>
+            <PropertyRef Name="Role" />
+          </Key>
+          <Property Name="Role" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="RoleDesc" Type="varchar" MaxLength="100" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WebRoles">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="WebUserID" Type="int" />
+          <Property Name="InitialCatalogID" Type="int" />
+          <Property Name="Role" Type="char" MaxLength="1" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WebUser">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WebUserName" Type="varchar" MaxLength="50" />
+          <Property Name="WebUserPassword" Type="varchar" MaxLength="150" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" />
+          <Property Name="Inactive" Type="bit" />
+          <Property Name="IsLocked" Type="varchar" MaxLength="10" />
+          <Property Name="LastLogin" Type="varchar" MaxLength="50" />
+          <Property Name="RetryCount" Type="varchar" MaxLength="50" />
+          <Property Name="PasswordUpdatedOn" Type="datetime" />
+          <Property Name="SecurityQuestion" Type="nvarchar" MaxLength="250" />
+          <Property Name="SecurityAnswer" Type="nvarchar" MaxLength="250" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Phone" Type="bigint" />
+          <Property Name="User_ID" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="WebUserHistory">
+          <Key>
+            <PropertyRef Name="WUhid" />
+          </Key>
+          <Property Name="WUhid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID" Type="int" />
+          <Property Name="WebUserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="WebUserPassword" Type="nvarchar" MaxLength="100" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Inactive" Type="bit" Nullable="false" />
+          <Property Name="IsLocked" Type="bit" />
+          <Property Name="LastLogin" Type="datetime" />
+          <Property Name="RetryCount" Type="int" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="zzzInitialCatalog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InitialCatalog" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="zzzWebImport_Purchases">
+          <Key>
+            <PropertyRef Name="zzzWebImport_PurchasesID" />
+          </Key>
+          <Property Name="Entity" Type="nvarchar" MaxLength="255" />
+          <Property Name="AssetID" Type="nvarchar" MaxLength="255" />
+          <Property Name="AssetManu" Type="nvarchar" MaxLength="255" />
+          <Property Name="AssetModel" Type="nvarchar" MaxLength="255" />
+          <Property Name="AssetCategory" Type="nvarchar" MaxLength="255" />
+          <Property Name="AssetDescr" Type="nvarchar" MaxLength="255" />
+          <Property Name="AssetType" Type="tinyint" />
+          <Property Name="LKEEligible_Purchase" Type="tinyint" />
+          <Property Name="AcqDate" Type="nvarchar" MaxLength="10" />
+          <Property Name="BuyerName" Type="nvarchar" MaxLength="255" />
+          <Property Name="CtryRQAsset" Type="nvarchar" MaxLength="255" />
+          <Property Name="StRQAsset" Type="nvarchar" MaxLength="255" />
+          <Property Name="Currency" Type="nvarchar" MaxLength="255" />
+          <Property Name="For_Dom" Type="nvarchar" MaxLength="255" />
+          <Property Name="PONum" Type="nvarchar" MaxLength="255" />
+          <Property Name="NeworUsed" Type="tinyint" />
+          <Property Name="CaseID" Type="int" />
+          <Property Name="CaseID2" Type="int" />
+          <Property Name="LEID" Type="int" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="255" />
+          <Property Name="RelatedPartyPurchase" Type="tinyint" />
+          <Property Name="DateAssetAdded" Type="nvarchar" MaxLength="10" />
+          <Property Name="AssedAddedby" Type="nvarchar" MaxLength="255" />
+          <Property Name="Actual_ConstructiveReceipt" Type="float" />
+          <Property Name="OptFld_Varchar1" Type="nvarchar" MaxLength="255" />
+          <Property Name="OptFld_Varchar2" Type="nvarchar" MaxLength="255" />
+          <Property Name="OptFld_Varchar3" Type="nvarchar" MaxLength="255" />
+          <Property Name="OptFld_Varchar4" Type="nvarchar" MaxLength="255" />
+          <Property Name="OptFld_Varchar5" Type="nvarchar" MaxLength="255" />
+          <Property Name="OptFld_Varchar6" Type="nvarchar" MaxLength="255" />
+          <Property Name="OptFld_Varchar7" Type="nvarchar" MaxLength="255" />
+          <Property Name="OptFld_Varchar8" Type="nvarchar" MaxLength="255" />
+          <Property Name="OptFld_Varchar9" Type="nvarchar" MaxLength="255" />
+          <Property Name="OptFld_Varchar10" Type="nvarchar" MaxLength="255" />
+          <Property Name="OptFld_Integer1" Type="int" />
+          <Property Name="OptFld_Integer2" Type="int" />
+          <Property Name="OptFld_Integer3" Type="int" />
+          <Property Name="OptFld_Integer4" Type="int" />
+          <Property Name="OptFld_Integer5" Type="int" />
+          <Property Name="OptFld_Integer6" Type="int" />
+          <Property Name="OptFld_Integer7" Type="int" />
+          <Property Name="OptFld_Integer8" Type="int" />
+          <Property Name="OptFld_Integer9" Type="int" />
+          <Property Name="OptFld_Integer10" Type="int" />
+          <Property Name="AcqCost" Type="float" />
+          <Property Name="BootReceived" Type="float" />
+          <Property Name="ActConsReceipt" Type="float" />
+          <Property Name="BonusDepCde" Type="tinyint" />
+          <Property Name="Depreciate" Type="tinyint" />
+          <Property Name="DepreciableLife" Type="float" />
+          <Property Name="Convention" Type="nvarchar" MaxLength="255" />
+          <Property Name="Method" Type="nvarchar" MaxLength="255" />
+          <Property Name="Dep_Type" Type="nvarchar" MaxLength="255" />
+          <Property Name="DepTbl" Type="nvarchar" MaxLength="255" />
+          <Property Name="ResidualValue" Type="float" />
+          <Property Name="UseResidualValue" Type="tinyint" />
+          <Property Name="ParentAssetID" Type="nvarchar" MaxLength="255" />
+          <Property Name="OptFld_Float1" Type="float" />
+          <Property Name="OptFld_Float2" Type="float" />
+          <Property Name="OptFld_Float3" Type="float" />
+          <Property Name="OptFld_Float4" Type="float" />
+          <Property Name="OptFld_Float5" Type="float" />
+          <Property Name="OptFld_Float6" Type="float" />
+          <Property Name="OptFld_Float7" Type="float" />
+          <Property Name="OptFld_Float8" Type="float" />
+          <Property Name="OptFld_Float9" Type="float" />
+          <Property Name="OptFld_Float10" Type="float" />
+          <Property Name="PISDate" Type="date" />
+          <Property Name="LiabilityAssumed" Type="float" />
+          <Property Name="FedAccumDep" Type="float" />
+          <Property Name="FedAccumMonths" Type="float" />
+          <Property Name="AmtAccumDep" Type="float" />
+          <Property Name="AmtAccumMonths" Type="float" />
+          <Property Name="Method3AccumDep" Type="float" />
+          <Property Name="Method3AccumMonths" Type="float" />
+          <Property Name="Method4AccumDep" Type="float" />
+          <Property Name="Method4AccumMonths" Type="float" />
+          <Property Name="Method5AccumDep" Type="float" />
+          <Property Name="Method5AccumMonths" Type="float" />
+          <Property Name="zzzWebImport_PurchasesID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OptFld_Varchar11" Type="varchar" MaxLength="255" />
+          <Property Name="OptFld_Varchar12" Type="varchar" MaxLength="255" />
+          <Property Name="OptFld_Varchar13" Type="varchar" MaxLength="255" />
+          <Property Name="OptFld_Varchar14" Type="varchar" MaxLength="255" />
+          <Property Name="OptFld_Varchar15" Type="varchar" MaxLength="255" />
+          <Property Name="OptFld_Varchar16" Type="varchar" MaxLength="255" />
+          <Property Name="OptFld_Varchar17" Type="varchar" MaxLength="255" />
+          <Property Name="OptFld_Varchar18" Type="varchar" MaxLength="255" />
+          <Property Name="OptFld_Varchar19" Type="varchar" MaxLength="255" />
+          <Property Name="OptFld_Varchar20" Type="varchar" MaxLength="255" />
+          <Property Name="OptFld_Varchar21" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'LKE_Login.dbo.zzzWebUser_BkupOrig' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="zzzWebUser_BkupOrig">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="InitialCatalogID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WebUserName" Type="varchar" MaxLength="50" />
+          <Property Name="WebUserPassword" Type="varchar" MaxLength="50" />
+          <Property Name="InitialCatalogID" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_ReportsArchive_UserActionTrack_Id">
+          <End Role="UserActionTrack" Type="Self.UserActionTrack" Multiplicity="1" />
+          <End Role="ReportsArchive" Type="Self.ReportsArchive" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserActionTrack">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReportsArchive">
+              <PropertyRef Name="UserActionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WebDbaseAssignments_DatabaseKey">
+          <End Role="WebDatabases" Type="Self.WebDatabases" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="WebDbaseAssignments" Type="Self.WebDbaseAssignments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WebDatabases">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="WebDbaseAssignments">
+              <PropertyRef Name="DbaseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WebDbaseAssignments_WebUsers">
+          <End Role="WebUser" Type="Self.WebUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="WebDbaseAssignments" Type="Self.WebDbaseAssignments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WebUser">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="WebDbaseAssignments">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WebRoles_WebRoleDesc">
+          <End Role="WebRoleDesc" Type="Self.WebRoleDesc" Multiplicity="0..1" />
+          <End Role="WebRoles" Type="Self.WebRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WebRoleDesc">
+              <PropertyRef Name="Role" />
+            </Principal>
+            <Dependent Role="WebRoles">
+              <PropertyRef Name="Role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WebRoles_WebUser">
+          <End Role="WebUser" Type="Self.WebUser" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="WebRoles" Type="Self.WebRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WebUser">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="WebRoles">
+              <PropertyRef Name="WebUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="GetAdminAllUsers" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="IS_001_GetDbaseList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserName" Type="varchar" Mode="In" />
+          <Parameter Name="UserPassword" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="LockUnlockUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="wuid" Type="int" Mode="In" />
+          <Parameter Name="isLocked" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="LKE_LoginModelStoreContainer">
+          <EntitySet Name="LogInHistory" EntityType="Self.LogInHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReportsArchive" EntityType="Self.ReportsArchive" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserActionTrack" EntityType="Self.UserActionTrack" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WebDatabases" EntityType="Self.WebDatabases" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WebDbaseAssignments" EntityType="Self.WebDbaseAssignments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WebRoleDesc" EntityType="Self.WebRoleDesc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WebRoles" EntityType="Self.WebRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WebUser" EntityType="Self.WebUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WebUserHistory" EntityType="Self.WebUserHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="zzzInitialCatalog" EntityType="Self.zzzInitialCatalog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="zzzWebImport_Purchases" EntityType="Self.zzzWebImport_Purchases" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="zzzWebUser_BkupOrig" EntityType="Self.zzzWebUser_BkupOrig" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [zzzWebUser_BkupOrig].[ID] AS [ID], 
+    [zzzWebUser_BkupOrig].[WebUserName] AS [WebUserName], 
+    [zzzWebUser_BkupOrig].[WebUserPassword] AS [WebUserPassword], 
+    [zzzWebUser_BkupOrig].[InitialCatalogID] AS [InitialCatalogID]
+    FROM [dbo].[zzzWebUser_BkupOrig] AS [zzzWebUser_BkupOrig]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_ReportsArchive_UserActionTrack_Id" Association="Self.FK_ReportsArchive_UserActionTrack_Id">
+            <End Role="UserActionTrack" EntitySet="UserActionTrack" />
+            <End Role="ReportsArchive" EntitySet="ReportsArchive" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WebDbaseAssignments_DatabaseKey" Association="Self.FK_WebDbaseAssignments_DatabaseKey">
+            <End Role="WebDatabases" EntitySet="WebDatabases" />
+            <End Role="WebDbaseAssignments" EntitySet="WebDbaseAssignments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WebDbaseAssignments_WebUsers" Association="Self.FK_WebDbaseAssignments_WebUsers">
+            <End Role="WebUser" EntitySet="WebUser" />
+            <End Role="WebDbaseAssignments" EntitySet="WebDbaseAssignments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WebRoles_WebRoleDesc" Association="Self.FK_WebRoles_WebRoleDesc">
+            <End Role="WebRoleDesc" EntitySet="WebRoleDesc" />
+            <End Role="WebRoles" EntitySet="WebRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WebRoles_WebUser" Association="Self.FK_WebRoles_WebUser">
+            <End Role="WebUser" EntitySet="WebUser" />
+            <End Role="WebRoles" EntitySet="WebRoles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LKE_LoginModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="LogInHistory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="webuserID" Type="Int32" />
+          <Property Name="webuserDbaseID" Type="Int32" />
+          <Property Name="webuserLoginDate" Type="DateTime" Precision="0" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="UserActionTrack">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+          <Property Name="Username" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="ReportId" Type="Int32" />
+          <Property Name="Type" MaxLength="50" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="IsStarted" Type="Boolean" />
+          <Property Name="IsCompleted" Type="Boolean" />
+          <Property Name="CreatedFilePath" MaxLength="500" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="Database" MaxLength="300" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="CreatedDate" Precision="3" Type="DateTime" />
+          <Property Name="ReportIDShortNames" MaxLength="1000" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="NotificationText" MaxLength="1000" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="IsRequestRecreation" Type="Boolean" />
+          <NavigationProperty Name="ReportsArchives" Relationship="LKE_LoginModel.FK_ReportsArchive_UserActionTrack_Id" FromRole="UserActionTrack" ToRole="ReportsArchive" />
+        </EntityType>
+        <EntityType Name="WebDatabas">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GenericDbaseName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ActualDbaseName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Active" Type="Byte" />
+          <NavigationProperty Name="WebDbaseAssignments" Relationship="Self.FK_WebDbaseAssignments_DatabaseKey" FromRole="WebDatabases" ToRole="WebDbaseAssignments" />
+        </EntityType>
+        <EntityType Name="WebDbaseAssignment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="DbaseID" Type="Int32" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="WebDatabas" Relationship="Self.FK_WebDbaseAssignments_DatabaseKey" FromRole="WebDbaseAssignments" ToRole="WebDatabases" />
+          <NavigationProperty Name="WebUser" Relationship="Self.FK_WebDbaseAssignments_WebUsers" FromRole="WebDbaseAssignments" ToRole="WebUser" />
+        </EntityType>
+        <EntityType Name="WebRoleDesc">
+          <Key>
+            <PropertyRef Name="Role" />
+          </Key>
+          <Property Name="Role" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="RoleDesc" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="WebRoles" Relationship="Self.FK_WebRoles_WebRoleDesc" FromRole="WebRoleDesc" ToRole="WebRoles" />
+        </EntityType>
+        <EntityType Name="WebRole">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="WebUserID" Type="Int32" />
+          <Property Name="InitialCatalogID" Type="Int32" />
+          <Property Name="Role" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="WebRoleDesc" Relationship="Self.FK_WebRoles_WebRoleDesc" FromRole="WebRoles" ToRole="WebRoleDesc" />
+          <NavigationProperty Name="WebUser" Relationship="Self.FK_WebRoles_WebUser" FromRole="WebRoles" ToRole="WebUser" />
+        </EntityType>
+        <EntityType Name="WebUser">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WebUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="WebUserPassword" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Inactive" Type="Boolean" />
+          <Property Name="IsLocked" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="LastLogin" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RetryCount" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PasswordUpdatedOn" Type="DateTime" Precision="3" />
+          <Property Name="SecurityQuestion" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityAnswer" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="Int64" />
+          <Property Name="User_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="WebDbaseAssignments" Relationship="Self.FK_WebDbaseAssignments_WebUsers" FromRole="WebUser" ToRole="WebDbaseAssignments" />
+          <NavigationProperty Name="WebRoles" Relationship="Self.FK_WebRoles_WebUser" FromRole="WebUser" ToRole="WebRoles" />
+        </EntityType>
+        <EntityType Name="WebUserHistory">
+          <Key>
+            <PropertyRef Name="WUhid" />
+          </Key>
+          <Property Name="WUhid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int32" />
+          <Property Name="WebUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WebUserPassword" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Inactive" Type="Boolean" Nullable="false" />
+          <Property Name="IsLocked" Type="Boolean" />
+          <Property Name="LastLogin" Type="DateTime" Precision="3" />
+          <Property Name="RetryCount" Type="Int32" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="zzzInitialCatalog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InitialCatalog" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="zzzWebImport_Purchases">
+          <Key>
+            <PropertyRef Name="zzzWebImport_PurchasesID" />
+          </Key>
+          <Property Name="Entity" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="AssetID" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="AssetManu" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="AssetModel" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="AssetCategory" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="AssetDescr" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="AssetType" Type="Byte" />
+          <Property Name="LKEEligible_Purchase" Type="Byte" />
+          <Property Name="AcqDate" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="BuyerName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="CtryRQAsset" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="StRQAsset" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Currency" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="For_Dom" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PONum" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="NeworUsed" Type="Byte" />
+          <Property Name="CaseID" Type="Int32" />
+          <Property Name="CaseID2" Type="Int32" />
+          <Property Name="LEID" Type="Int32" />
+          <Property Name="Notes" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="RelatedPartyPurchase" Type="Byte" />
+          <Property Name="DateAssetAdded" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="AssedAddedby" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Actual_ConstructiveReceipt" Type="Double" />
+          <Property Name="OptFld_Varchar1" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="OptFld_Varchar2" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="OptFld_Varchar3" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="OptFld_Varchar4" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="OptFld_Varchar5" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="OptFld_Varchar6" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="OptFld_Varchar7" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="OptFld_Varchar8" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="OptFld_Varchar9" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="OptFld_Varchar10" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="OptFld_Integer1" Type="Int32" />
+          <Property Name="OptFld_Integer2" Type="Int32" />
+          <Property Name="OptFld_Integer3" Type="Int32" />
+          <Property Name="OptFld_Integer4" Type="Int32" />
+          <Property Name="OptFld_Integer5" Type="Int32" />
+          <Property Name="OptFld_Integer6" Type="Int32" />
+          <Property Name="OptFld_Integer7" Type="Int32" />
+          <Property Name="OptFld_Integer8" Type="Int32" />
+          <Property Name="OptFld_Integer9" Type="Int32" />
+          <Property Name="OptFld_Integer10" Type="Int32" />
+          <Property Name="AcqCost" Type="Double" />
+          <Property Name="BootReceived" Type="Double" />
+          <Property Name="ActConsReceipt" Type="Double" />
+          <Property Name="BonusDepCde" Type="Byte" />
+          <Property Name="Depreciate" Type="Byte" />
+          <Property Name="DepreciableLife" Type="Double" />
+          <Property Name="Convention" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Method" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Dep_Type" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="DepTbl" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ResidualValue" Type="Double" />
+          <Property Name="UseResidualValue" Type="Byte" />
+          <Property Name="ParentAssetID" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="OptFld_Float1" Type="Double" />
+          <Property Name="OptFld_Float2" Type="Double" />
+          <Property Name="OptFld_Float3" Type="Double" />
+          <Property Name="OptFld_Float4" Type="Double" />
+          <Property Name="OptFld_Float5" Type="Double" />
+          <Property Name="OptFld_Float6" Type="Double" />
+          <Property Name="OptFld_Float7" Type="Double" />
+          <Property Name="OptFld_Float8" Type="Double" />
+          <Property Name="OptFld_Float9" Type="Double" />
+          <Property Name="OptFld_Float10" Type="Double" />
+          <Property Name="PISDate" Type="DateTime" Precision="0" />
+          <Property Name="LiabilityAssumed" Type="Double" />
+          <Property Name="FedAccumDep" Type="Double" />
+          <Property Name="FedAccumMonths" Type="Double" />
+          <Property Name="AmtAccumDep" Type="Double" />
+          <Property Name="AmtAccumMonths" Type="Double" />
+          <Property Name="Method3AccumDep" Type="Double" />
+          <Property Name="Method3AccumMonths" Type="Double" />
+          <Property Name="Method4AccumDep" Type="Double" />
+          <Property Name="Method4AccumMonths" Type="Double" />
+          <Property Name="Method5AccumDep" Type="Double" />
+          <Property Name="Method5AccumMonths" Type="Double" />
+          <Property Name="zzzWebImport_PurchasesID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OptFld_Varchar11" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="OptFld_Varchar12" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="OptFld_Varchar13" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="OptFld_Varchar14" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="OptFld_Varchar15" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="OptFld_Varchar16" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="OptFld_Varchar17" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="OptFld_Varchar18" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="OptFld_Varchar19" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="OptFld_Varchar20" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="OptFld_Varchar21" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="zzzWebUser_BkupOrig">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="InitialCatalogID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WebUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="WebUserPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="InitialCatalogID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_WebDbaseAssignments_DatabaseKey">
+          <End Role="WebDatabases" Type="Self.WebDatabas" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="WebDbaseAssignments" Type="Self.WebDbaseAssignment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WebDatabases">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="WebDbaseAssignments">
+              <PropertyRef Name="DbaseID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WebDbaseAssignments_WebUsers">
+          <End Role="WebUser" Type="Self.WebUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="WebDbaseAssignments" Type="Self.WebDbaseAssignment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WebUser">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="WebDbaseAssignments">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WebRoles_WebRoleDesc">
+          <End Role="WebRoleDesc" Type="Self.WebRoleDesc" Multiplicity="0..1" />
+          <End Role="WebRoles" Type="Self.WebRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WebRoleDesc">
+              <PropertyRef Name="Role" />
+            </Principal>
+            <Dependent Role="WebRoles">
+              <PropertyRef Name="Role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WebRoles_WebUser">
+          <End Role="WebUser" Type="Self.WebUser" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="WebRoles" Type="Self.WebRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WebUser">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="WebRoles">
+              <PropertyRef Name="WebUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LKE_LoginEntities" annotation:LazyLoadingEnabled="false">
+          <EntitySet Name="LogInHistories" EntityType="Self.LogInHistory" />
+          <EntitySet Name="UserActionTracks" EntityType="Self.UserActionTrack" />
+          <EntitySet Name="WebDatabases" EntityType="Self.WebDatabas" />
+          <EntitySet Name="WebDbaseAssignments" EntityType="Self.WebDbaseAssignment" />
+          <EntitySet Name="WebRoleDescs" EntityType="Self.WebRoleDesc" />
+          <EntitySet Name="WebRoles" EntityType="Self.WebRole" />
+          <EntitySet Name="WebUsers" EntityType="Self.WebUser" />
+          <EntitySet Name="WebUserHistories" EntityType="Self.WebUserHistory" />
+          <EntitySet Name="zzzInitialCatalogs" EntityType="Self.zzzInitialCatalog" />
+          <EntitySet Name="zzzWebImport_Purchases" EntityType="Self.zzzWebImport_Purchases" />
+          <EntitySet Name="zzzWebUser_BkupOrig" EntityType="Self.zzzWebUser_BkupOrig" />
+          <AssociationSet Name="FK_WebDbaseAssignments_DatabaseKey" Association="Self.FK_WebDbaseAssignments_DatabaseKey">
+            <End Role="WebDatabases" EntitySet="WebDatabases" />
+            <End Role="WebDbaseAssignments" EntitySet="WebDbaseAssignments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WebDbaseAssignments_WebUsers" Association="Self.FK_WebDbaseAssignments_WebUsers">
+            <End Role="WebUser" EntitySet="WebUsers" />
+            <End Role="WebDbaseAssignments" EntitySet="WebDbaseAssignments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WebRoles_WebRoleDesc" Association="Self.FK_WebRoles_WebRoleDesc">
+            <End Role="WebRoleDesc" EntitySet="WebRoleDescs" />
+            <End Role="WebRoles" EntitySet="WebRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WebRoles_WebUser" Association="Self.FK_WebRoles_WebUser">
+            <End Role="WebUser" EntitySet="WebUsers" />
+            <End Role="WebRoles" EntitySet="WebRoles" />
+          </AssociationSet>
+          <FunctionImport Name="GetAdminAllUsers" ReturnType="Collection(LKE_LoginModel.GetAdminAllUsers_Result)" />
+          <FunctionImport Name="IS_001_GetDbaseList" ReturnType="Collection(String)">
+            <Parameter Name="UserName" Mode="In" Type="String" />
+            <Parameter Name="UserPassword" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="LockUnlockUser" ReturnType="Collection(Int32)">
+            <Parameter Name="wuid" Mode="In" Type="Int32" />
+            <Parameter Name="isLocked" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="ReportsArchives" EntityType="LKE_LoginModel.ReportsArchive" />
+          <AssociationSet Name="FK_ReportsArchive_UserActionTrack_Id" Association="LKE_LoginModel.FK_ReportsArchive_UserActionTrack_Id">
+            <End Role="UserActionTrack" EntitySet="UserActionTracks" />
+            <End Role="ReportsArchive" EntitySet="ReportsArchives" />
+          </AssociationSet>
+        </EntityContainer>
+        <ComplexType Name="GetAdminAllUsers_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="WebUserName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="WebUserPassword" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="FirstName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="LastName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Phone" Nullable="true" MaxLength="4000" />
+          <Property Type="Boolean" Name="Inactive" Nullable="true" />
+          <Property Type="String" Name="IsLocked" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="SecurityQuestion" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="SecurityAnswer" Nullable="true" MaxLength="250" />
+          <Property Type="Int32" Name="Clients" Nullable="true" />
+          <Property Type="String" Name="ClientName" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <EntityType Name="ReportsArchive">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserActionID" Type="Int32" Nullable="false" />
+          <Property Name="ReportID" Type="Int32" />
+          <Property Name="ReportName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Username" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="YearID" Type="Int32" />
+          <Property Name="CaseID" Type="Int32" />
+          <Property Name="CaseID2" Type="Int32" />
+          <Property Name="LEID" Type="Int32" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="Dep_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="BlobName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ContainerName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="generationStatus" Type="Int32" />
+          <NavigationProperty Name="UserActionTrack" Relationship="LKE_LoginModel.FK_ReportsArchive_UserActionTrack_Id" FromRole="ReportsArchive" ToRole="UserActionTrack" />
+        </EntityType>
+        <Association Name="FK_ReportsArchive_UserActionTrack_Id">
+          <End Type="LKE_LoginModel.UserActionTrack" Role="UserActionTrack" Multiplicity="1" />
+          <End Type="LKE_LoginModel.ReportsArchive" Role="ReportsArchive" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserActionTrack">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ReportsArchive">
+              <PropertyRef Name="UserActionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LKE_LoginModelStoreContainer" CdmEntityContainer="LKE_LoginEntities">
+          <EntitySetMapping Name="LogInHistories">
+            <EntityTypeMapping TypeName="LKE_LoginModel.LogInHistory">
+              <MappingFragment StoreEntitySet="LogInHistory">
+                <ScalarProperty Name="webuserID" ColumnName="webuserID" />
+                <ScalarProperty Name="webuserDbaseID" ColumnName="webuserDbaseID" />
+                <ScalarProperty Name="webuserLoginDate" ColumnName="webuserLoginDate" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserActionTracks">
+            <EntityTypeMapping TypeName="LKE_LoginModel.UserActionTrack">
+              <MappingFragment StoreEntitySet="UserActionTrack">
+                <ScalarProperty Name="IsRequestRecreation" ColumnName="IsRequestRecreation" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="ReportId" ColumnName="ReportId" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="IsStarted" ColumnName="IsStarted" />
+                <ScalarProperty Name="IsCompleted" ColumnName="IsCompleted" />
+                <ScalarProperty Name="CreatedFilePath" ColumnName="CreatedFilePath" />
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ReportIDShortNames" ColumnName="ReportIDShortNames" />
+                <ScalarProperty Name="NotificationText" ColumnName="NotificationText" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WebDatabases">
+            <EntityTypeMapping TypeName="LKE_LoginModel.WebDatabas">
+              <MappingFragment StoreEntitySet="WebDatabases">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="GenericDbaseName" ColumnName="GenericDbaseName" />
+                <ScalarProperty Name="ActualDbaseName" ColumnName="ActualDbaseName" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WebDbaseAssignments">
+            <EntityTypeMapping TypeName="LKE_LoginModel.WebDbaseAssignment">
+              <MappingFragment StoreEntitySet="WebDbaseAssignments">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="DbaseID" ColumnName="DbaseID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WebRoleDescs">
+            <EntityTypeMapping TypeName="LKE_LoginModel.WebRoleDesc">
+              <MappingFragment StoreEntitySet="WebRoleDesc">
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="RoleDesc" ColumnName="RoleDesc" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WebRoles">
+            <EntityTypeMapping TypeName="LKE_LoginModel.WebRole">
+              <MappingFragment StoreEntitySet="WebRoles">
+                <ScalarProperty Name="WebUserID" ColumnName="WebUserID" />
+                <ScalarProperty Name="InitialCatalogID" ColumnName="InitialCatalogID" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WebUsers">
+            <EntityTypeMapping TypeName="LKE_LoginModel.WebUser">
+              <MappingFragment StoreEntitySet="WebUser">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="WebUserName" ColumnName="WebUserName" />
+                <ScalarProperty Name="WebUserPassword" ColumnName="WebUserPassword" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Inactive" ColumnName="Inactive" />
+                <ScalarProperty Name="IsLocked" ColumnName="IsLocked" />
+                <ScalarProperty Name="LastLogin" ColumnName="LastLogin" />
+                <ScalarProperty Name="RetryCount" ColumnName="RetryCount" />
+                <ScalarProperty Name="PasswordUpdatedOn" ColumnName="PasswordUpdatedOn" />
+                <ScalarProperty Name="SecurityQuestion" ColumnName="SecurityQuestion" />
+                <ScalarProperty Name="SecurityAnswer" ColumnName="SecurityAnswer" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WebUserHistories">
+            <EntityTypeMapping TypeName="LKE_LoginModel.WebUserHistory">
+              <MappingFragment StoreEntitySet="WebUserHistory">
+                <ScalarProperty Name="WUhid" ColumnName="WUhid" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="WebUserName" ColumnName="WebUserName" />
+                <ScalarProperty Name="WebUserPassword" ColumnName="WebUserPassword" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Inactive" ColumnName="Inactive" />
+                <ScalarProperty Name="IsLocked" ColumnName="IsLocked" />
+                <ScalarProperty Name="LastLogin" ColumnName="LastLogin" />
+                <ScalarProperty Name="RetryCount" ColumnName="RetryCount" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="zzzInitialCatalogs">
+            <EntityTypeMapping TypeName="LKE_LoginModel.zzzInitialCatalog">
+              <MappingFragment StoreEntitySet="zzzInitialCatalog">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="InitialCatalog" ColumnName="InitialCatalog" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="zzzWebImport_Purchases">
+            <EntityTypeMapping TypeName="LKE_LoginModel.zzzWebImport_Purchases">
+              <MappingFragment StoreEntitySet="zzzWebImport_Purchases">
+                <ScalarProperty Name="Entity" ColumnName="Entity" />
+                <ScalarProperty Name="AssetID" ColumnName="AssetID" />
+                <ScalarProperty Name="AssetManu" ColumnName="AssetManu" />
+                <ScalarProperty Name="AssetModel" ColumnName="AssetModel" />
+                <ScalarProperty Name="AssetCategory" ColumnName="AssetCategory" />
+                <ScalarProperty Name="AssetDescr" ColumnName="AssetDescr" />
+                <ScalarProperty Name="AssetType" ColumnName="AssetType" />
+                <ScalarProperty Name="LKEEligible_Purchase" ColumnName="LKEEligible_Purchase" />
+                <ScalarProperty Name="AcqDate" ColumnName="AcqDate" />
+                <ScalarProperty Name="BuyerName" ColumnName="BuyerName" />
+                <ScalarProperty Name="CtryRQAsset" ColumnName="CtryRQAsset" />
+                <ScalarProperty Name="StRQAsset" ColumnName="StRQAsset" />
+                <ScalarProperty Name="Currency" ColumnName="Currency" />
+                <ScalarProperty Name="For_Dom" ColumnName="For_Dom" />
+                <ScalarProperty Name="PONum" ColumnName="PONum" />
+                <ScalarProperty Name="NeworUsed" ColumnName="NeworUsed" />
+                <ScalarProperty Name="CaseID" ColumnName="CaseID" />
+                <ScalarProperty Name="CaseID2" ColumnName="CaseID2" />
+                <ScalarProperty Name="LEID" ColumnName="LEID" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="RelatedPartyPurchase" ColumnName="RelatedPartyPurchase" />
+                <ScalarProperty Name="DateAssetAdded" ColumnName="DateAssetAdded" />
+                <ScalarProperty Name="AssedAddedby" ColumnName="AssedAddedby" />
+                <ScalarProperty Name="Actual_ConstructiveReceipt" ColumnName="Actual_ConstructiveReceipt" />
+                <ScalarProperty Name="OptFld_Varchar1" ColumnName="OptFld_Varchar1" />
+                <ScalarProperty Name="OptFld_Varchar2" ColumnName="OptFld_Varchar2" />
+                <ScalarProperty Name="OptFld_Varchar3" ColumnName="OptFld_Varchar3" />
+                <ScalarProperty Name="OptFld_Varchar4" ColumnName="OptFld_Varchar4" />
+                <ScalarProperty Name="OptFld_Varchar5" ColumnName="OptFld_Varchar5" />
+                <ScalarProperty Name="OptFld_Varchar6" ColumnName="OptFld_Varchar6" />
+                <ScalarProperty Name="OptFld_Varchar7" ColumnName="OptFld_Varchar7" />
+                <ScalarProperty Name="OptFld_Varchar8" ColumnName="OptFld_Varchar8" />
+                <ScalarProperty Name="OptFld_Varchar9" ColumnName="OptFld_Varchar9" />
+                <ScalarProperty Name="OptFld_Varchar10" ColumnName="OptFld_Varchar10" />
+                <ScalarProperty Name="OptFld_Integer1" ColumnName="OptFld_Integer1" />
+                <ScalarProperty Name="OptFld_Integer2" ColumnName="OptFld_Integer2" />
+                <ScalarProperty Name="OptFld_Integer3" ColumnName="OptFld_Integer3" />
+                <ScalarProperty Name="OptFld_Integer4" ColumnName="OptFld_Integer4" />
+                <ScalarProperty Name="OptFld_Integer5" ColumnName="OptFld_Integer5" />
+                <ScalarProperty Name="OptFld_Integer6" ColumnName="OptFld_Integer6" />
+                <ScalarProperty Name="OptFld_Integer7" ColumnName="OptFld_Integer7" />
+                <ScalarProperty Name="OptFld_Integer8" ColumnName="OptFld_Integer8" />
+                <ScalarProperty Name="OptFld_Integer9" ColumnName="OptFld_Integer9" />
+                <ScalarProperty Name="OptFld_Integer10" ColumnName="OptFld_Integer10" />
+                <ScalarProperty Name="AcqCost" ColumnName="AcqCost" />
+                <ScalarProperty Name="BootReceived" ColumnName="BootReceived" />
+                <ScalarProperty Name="ActConsReceipt" ColumnName="ActConsReceipt" />
+                <ScalarProperty Name="BonusDepCde" ColumnName="BonusDepCde" />
+                <ScalarProperty Name="Depreciate" ColumnName="Depreciate" />
+                <ScalarProperty Name="DepreciableLife" ColumnName="DepreciableLife" />
+                <ScalarProperty Name="Convention" ColumnName="Convention" />
+                <ScalarProperty Name="Method" ColumnName="Method" />
+                <ScalarProperty Name="Dep_Type" ColumnName="Dep_Type" />
+                <ScalarProperty Name="DepTbl" ColumnName="DepTbl" />
+                <ScalarProperty Name="ResidualValue" ColumnName="ResidualValue" />
+                <ScalarProperty Name="UseResidualValue" ColumnName="UseResidualValue" />
+                <ScalarProperty Name="ParentAssetID" ColumnName="ParentAssetID" />
+                <ScalarProperty Name="OptFld_Float1" ColumnName="OptFld_Float1" />
+                <ScalarProperty Name="OptFld_Float2" ColumnName="OptFld_Float2" />
+                <ScalarProperty Name="OptFld_Float3" ColumnName="OptFld_Float3" />
+                <ScalarProperty Name="OptFld_Float4" ColumnName="OptFld_Float4" />
+                <ScalarProperty Name="OptFld_Float5" ColumnName="OptFld_Float5" />
+                <ScalarProperty Name="OptFld_Float6" ColumnName="OptFld_Float6" />
+                <ScalarProperty Name="OptFld_Float7" ColumnName="OptFld_Float7" />
+                <ScalarProperty Name="OptFld_Float8" ColumnName="OptFld_Float8" />
+                <ScalarProperty Name="OptFld_Float9" ColumnName="OptFld_Float9" />
+                <ScalarProperty Name="OptFld_Float10" ColumnName="OptFld_Float10" />
+                <ScalarProperty Name="PISDate" ColumnName="PISDate" />
+                <ScalarProperty Name="LiabilityAssumed" ColumnName="LiabilityAssumed" />
+                <ScalarProperty Name="FedAccumDep" ColumnName="FedAccumDep" />
+                <ScalarProperty Name="FedAccumMonths" ColumnName="FedAccumMonths" />
+                <ScalarProperty Name="AmtAccumDep" ColumnName="AmtAccumDep" />
+                <ScalarProperty Name="AmtAccumMonths" ColumnName="AmtAccumMonths" />
+                <ScalarProperty Name="Method3AccumDep" ColumnName="Method3AccumDep" />
+                <ScalarProperty Name="Method3AccumMonths" ColumnName="Method3AccumMonths" />
+                <ScalarProperty Name="Method4AccumDep" ColumnName="Method4AccumDep" />
+                <ScalarProperty Name="Method4AccumMonths" ColumnName="Method4AccumMonths" />
+                <ScalarProperty Name="Method5AccumDep" ColumnName="Method5AccumDep" />
+                <ScalarProperty Name="Method5AccumMonths" ColumnName="Method5AccumMonths" />
+                <ScalarProperty Name="zzzWebImport_PurchasesID" ColumnName="zzzWebImport_PurchasesID" />
+                <ScalarProperty Name="OptFld_Varchar11" ColumnName="OptFld_Varchar11" />
+                <ScalarProperty Name="OptFld_Varchar12" ColumnName="OptFld_Varchar12" />
+                <ScalarProperty Name="OptFld_Varchar13" ColumnName="OptFld_Varchar13" />
+                <ScalarProperty Name="OptFld_Varchar14" ColumnName="OptFld_Varchar14" />
+                <ScalarProperty Name="OptFld_Varchar15" ColumnName="OptFld_Varchar15" />
+                <ScalarProperty Name="OptFld_Varchar16" ColumnName="OptFld_Varchar16" />
+                <ScalarProperty Name="OptFld_Varchar17" ColumnName="OptFld_Varchar17" />
+                <ScalarProperty Name="OptFld_Varchar18" ColumnName="OptFld_Varchar18" />
+                <ScalarProperty Name="OptFld_Varchar19" ColumnName="OptFld_Varchar19" />
+                <ScalarProperty Name="OptFld_Varchar20" ColumnName="OptFld_Varchar20" />
+                <ScalarProperty Name="OptFld_Varchar21" ColumnName="OptFld_Varchar21" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="zzzWebUser_BkupOrig">
+            <EntityTypeMapping TypeName="LKE_LoginModel.zzzWebUser_BkupOrig">
+              <MappingFragment StoreEntitySet="zzzWebUser_BkupOrig">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="WebUserName" ColumnName="WebUserName" />
+                <ScalarProperty Name="WebUserPassword" ColumnName="WebUserPassword" />
+                <ScalarProperty Name="InitialCatalogID" ColumnName="InitialCatalogID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetAdminAllUsers" FunctionName="LKE_LoginModel.Store.GetAdminAllUsers">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="LKE_LoginModel.GetAdminAllUsers_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="WebUserName" ColumnName="WebUserName" />
+                <ScalarProperty Name="WebUserPassword" ColumnName="WebUserPassword" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Inactive" ColumnName="Inactive" />
+                <ScalarProperty Name="IsLocked" ColumnName="IsLocked" />
+                <ScalarProperty Name="SecurityQuestion" ColumnName="SecurityQuestion" />
+                <ScalarProperty Name="SecurityAnswer" ColumnName="SecurityAnswer" />
+                <ScalarProperty Name="Clients" ColumnName="Clients" />
+                <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="IS_001_GetDbaseList" FunctionName="LKE_LoginModel.Store.IS_001_GetDbaseList" />
+          <FunctionImportMapping FunctionImportName="LockUnlockUser" FunctionName="LKE_LoginModel.Store.LockUnlockUser" />
+          <EntitySetMapping Name="ReportsArchives">
+            <EntityTypeMapping TypeName="LKE_LoginModel.ReportsArchive">
+              <MappingFragment StoreEntitySet="ReportsArchive">
+                <ScalarProperty Name="generationStatus" ColumnName="generationStatus" />
+                <ScalarProperty Name="ContainerName" ColumnName="ContainerName" />
+                <ScalarProperty Name="BlobName" ColumnName="BlobName" />
+                <ScalarProperty Name="Dep_Type" ColumnName="Dep_Type" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="LEID" ColumnName="LEID" />
+                <ScalarProperty Name="CaseID2" ColumnName="CaseID2" />
+                <ScalarProperty Name="CaseID" ColumnName="CaseID" />
+                <ScalarProperty Name="YearID" ColumnName="YearID" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="ReportName" ColumnName="ReportName" />
+                <ScalarProperty Name="ReportID" ColumnName="ReportID" />
+                <ScalarProperty Name="UserActionID" ColumnName="UserActionID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

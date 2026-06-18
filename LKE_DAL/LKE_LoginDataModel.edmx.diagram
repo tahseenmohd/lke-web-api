@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="dad4c6368672484d81f130b4fb61194e" Name="Diagram1" ZoomLevel="95">
+        <EntityTypeShape EntityType="LKE_LoginModel.LogInHistory" Width="1.5" PointX="10.375" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKE_LoginModel.UserActionTrack" PointX="5.75" PointY="2.625" Width="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKE_LoginModel.WebDatabas" Width="1.5" PointX="0.75" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKE_LoginModel.WebDbaseAssignment" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKE_LoginModel.WebRoleDesc" Width="1.5" PointX="0.75" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKE_LoginModel.WebRole" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKE_LoginModel.WebUser" Width="1.5" PointX="0.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKE_LoginModel.WebUserHistory" Width="1.5" PointX="4.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKE_LoginModel.zzzInitialCatalog" Width="1.5" PointX="6.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKE_LoginModel.zzzWebImport_Purchases" Width="1.5" PointX="8.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LKE_LoginModel.zzzWebUser_BkupOrig" Width="1.5" PointX="2.75" PointY="11.125" IsExpanded="true" />
+        <AssociationConnector Association="LKE_LoginModel.FK_WebDbaseAssignments_DatabaseKey" ManuallyRouted="false" />
+        <AssociationConnector Association="LKE_LoginModel.FK_WebDbaseAssignments_WebUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="LKE_LoginModel.FK_WebRoles_WebRoleDesc" ManuallyRouted="false" />
+        <AssociationConnector Association="LKE_LoginModel.FK_WebRoles_WebUser" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="LKE_LoginModel.ReportsArchive" Width="1.5" PointX="8" PointY="1.375" />
+        <AssociationConnector Association="LKE_LoginModel.FK_ReportsArchive_UserActionTrack_Id" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
