@@ -1,0 +1,39 @@
+## Visual Studio build artifacts
+.vs/
+**/bin/
+**/obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## NuGet packages (restored on build)
+packages/
+!packages/repositories.config
+*.nupkg
+project.lock.json
+project.fragment.lock.json
+
+## Build output
+[Bb]uild/
+[Rr]elease/
+[Dd]ebug/
+
+## Published output and PDFS (runtime-generated)
+LKEWebAPI/PDFS/
+publish/
+
+## Secrets / config with real credentials
+## Keep Web.config in source but without real values
+# Add a Web.config.local (real values) to this ignore list if you create one
+
+## Windows artifacts
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+## JetBrains Rider
+.idea/
+
+## Logs
+*.log
